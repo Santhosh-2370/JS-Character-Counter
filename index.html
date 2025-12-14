@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2</title>
+</head>
+<body>
+    <style>
+    textarea{
+        width:1200px;
+        height: 200px;
+        resize: both;
+        background-color: black;
+        color: white;
+    }
+    textarea:hover{
+        background-color: white;
+        color: black;
+    }
+    .warning{
+        display:none;
+        color: red;
+    }
+    .counter{
+         font-size: 14px;
+    }
+    </style>
+    <div class="container">
+        <h3 class="container__text">Message:</h3>
+        <textarea id="message"class="container__input" type="text" placeholder="Enter Your message..."></textarea>
+    </div>
+    <div class="counter" id="counter">0/200 characters</div>
+    <div class="warning" id="warning">character Limit reached!!</div>
+    <script>
+        let message=document.getElementById("message")
+        let counter=document.getElementById("counter")
+        let warning=document.getElementById("warning")
+        const maxlength=200;
+
+        message.addEventListener("input",function(){
+            let currentlength=message.value.length;
+            if(currentlength> maxlength){
+                message.value=message.value.substring(0,maxlength);
+                warning.style.display="block";
+                currentLength = maxLength;
+            }
+            else{
+                warning.style.display="none";
+            }
+            counter.textContent=`${currentlength} / ${maxlength} characters`;
+        })
+    </script>
+</body>
+</html>
